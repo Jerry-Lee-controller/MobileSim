@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>모바일 비행 시뮬레이터</title>
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="sim"></canvas>
+    <div class="hud">
+      <div class="hud-row">
+        <span>속도: <strong id="speed">0</strong> m/s</span>
+        <span>고도: <strong id="altitude">0</strong> m</span>
+      </div>
+      <div class="hud-row">
+        <span>피치: <strong id="pitch">0</strong>°</span>
+        <span>연료: <strong id="fuel">100</strong>%</span>
+      </div>
+      <div class="hud-row">
+        <span>스코어: <strong id="score">0</strong></span>
+        <span>자세: <strong id="state">Taxi</strong></span>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="control" data-action="throttle-up">▲ 추력+</button>
+      <button class="control" data-action="throttle-down">▼ 추력-</button>
+      <div class="stick">
+        <button class="control" data-action="yaw-left">⟲ 좌선회</button>
+        <button class="control" data-action="yaw-right">⟳ 우선회</button>
+      </div>
+      <div class="stick">
+        <button class="control" data-action="pitch-up">⤴ 피치+</button>
+        <button class="control" data-action="pitch-down">⤵ 피치-</button>
+      </div>
+    </div>
+  </div>
+  <script src="src/main.js"></script>
+</body>
+</html>
