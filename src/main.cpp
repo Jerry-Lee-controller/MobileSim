@@ -13,17 +13,6 @@ namespace sim {
 
 constexpr double kDegToRad = M_PI / 180.0;
 
-template <typename T>
-T clampValue(T value, T minVal, T maxVal) {
-    if (value < minVal) {
-        return minVal;
-    }
-    if (value > maxVal) {
-        return maxVal;
-    }
-    return value;
-}
-
 struct Vec3 {
     double x;
     double y;
@@ -169,10 +158,10 @@ class Simulator {
     }
 
     void applyInput(const Input &input) {
-        state_.throttle = clampValue(state_.throttle + input.throttleDelta, 0.0, 1.0);
-        state_.pitch = clampValue(state_.pitch + input.pitchDelta, -45.0 * kDegToRad, 45.0 * kDegToRad);
+        state_.throttle = std::clamp(state_.throttle + input.throttleDelta, 0.0, 1.0);
+        state_.pitch = std::clamp(state_.pitch + input.pitchDelta, -45.0 * kDegToRad, 45.0 * kDegToRad);
         state_.yaw += input.yawDelta;
-        state_.roll = clampValue(state_.roll + input.rollDelta, -80.0 * kDegToRad, 80.0 * kDegToRad);
+        state_.roll = std::clamp(state_.roll + input.rollDelta, -80.0 * kDegToRad, 80.0 * kDegToRad);
     }
 
     void integrate(double dt) {
